@@ -1,6 +1,6 @@
 # Social_Network
 ## Descrição
-É uma aplicação voltada para a criação de um usuário junto a seus contatos à qual o próprio usuário poderá adicionalo e vinculalo a sua lista de contatos
+É uma aplicação voltada para a criação de um usuário junto aos seus contatos, à qual o próprio usuário poderá adicionalo e vinculalo a sua lista de contatos
 
 ### Configurando seu ambiente para a utilização do projeto
 ````
