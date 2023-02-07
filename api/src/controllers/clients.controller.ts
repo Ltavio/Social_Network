@@ -24,15 +24,17 @@ const listClientsController = async (req: Request, res: Response) => {
 
 const updateClientController = async (req: Request, res: Response) => {
     const dataClient = req.body;
-    const {id} = req.params;
+    const id = req.params.id;
     const response = await updatedClientService(dataClient, id)
+
+    return res.status(200).json(instanceToPlain(response));
 }
 
 const deleteClientController = async (req: Request, res: Response) => {
     const { id } = req.params;
     await deleteClientService(id)
 
-    return res.status(204).json({ message: "Client deleted with sucess!"})
+    return res.status(204).json({ message: "Client deleted with success!"})
 }
 
 export {

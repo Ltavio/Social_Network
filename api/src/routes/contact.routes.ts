@@ -12,8 +12,8 @@ const routes = Router();
 
 const contactRoutes = () => {
   routes.post("/",authTokenMiddleware, createContactController);
-  routes.patch("/",authTokenMiddleware, updatedContactController);
-  routes.delete("/",authTokenMiddleware, deleteContactController);
+  routes.patch("/:id",authTokenMiddleware, updatedContactController);
+  routes.delete("/:id",authTokenMiddleware, deleteContactController);
   routes.get("/",authTokenMiddleware, listContactController);
 
   return routes;
