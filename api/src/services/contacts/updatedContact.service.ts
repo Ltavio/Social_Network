@@ -7,30 +7,36 @@ import { IContactResponse, IContactUpdate } from "../../interfaces/contact";
 
 const updatedContactService = async (
     data: IContactUpdate,
-    id: string
+    clientId: string,
+    contactId: string
 ): Promise<IContactResponse> => {
     const contactRepository = AppDataSource.getRepository(Contact)
     const searchClient = await contactRepository.findOne({
         where: {
             client: {
-                id
+                id: clientId
             }
         }
     })
+    const searchContact = await contactRepository.findOneBy({id: contactId})
 
     if (!searchClient) {
         throw new AppError("Client not found", 404)
     }
 
+    if (!searchContact) {
+        throw new AppError("Contact not found", 404)
+    }
+
     const { name, email, phone } = data
 
-    await contactRepository.update(searchClient.id, {
-        name: name ? name : searchClient.name,
-        email: email ? email : searchClient.email,
-        phone: phone ? phone : searchClient.phone,
+    await contactRepository.update(searchContact.id, {
+        name: name ? name : searchContact.name,
+        email: email ? email : searchContact.email,
+        phone: phone ? phone : searchContact.phone,
     })
 
-    const contact = await contactRepository.findOneBy({ id: searchClient.id})
+    const contact = await contactRepository.findOneBy({ id: searchContact.id})
 
     return {
         message: "Updated contact",

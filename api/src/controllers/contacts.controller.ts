@@ -24,17 +24,19 @@ const listContactController = async (req: Request, res: Response) => {
 }
 
 const deleteContactController = async (req: Request, res: Response) => {
-    const clientId = req.user.id;
-    await deleteContactsService(clientId);
+    // const clientId = req.user.id;
+    const contactId = req.params.id;
+    await deleteContactsService(contactId);
 
     res.status(204).end();
 }
 
 const updatedContactController = async (req: Request, res: Response) => {
     const data = req.body;
-    const id = req.user.id;
+    const clientId = req.user.id;
+    const contactId = req.params.id;
 
-    const response = await updatedContactService(data, id);
+    const response = await updatedContactService(data, clientId, contactId);
 
     return res.status(200).json(instanceToPlain(response));
 }

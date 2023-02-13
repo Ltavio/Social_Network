@@ -5,15 +5,9 @@ import Contact from "../../entities/contact.entity";
 import Client from "../../entities/client.entity";
 
 
-const deleteContactsService = async(clientId: string): Promise<void> => {
+const deleteContactsService = async(contactId: string): Promise<void> => {
     const contactRepository = AppDataSource.getRepository(Contact);
-    const searchContact = await contactRepository.findOne({
-      where: {
-        client: {
-          id: clientId,
-        },
-      },
-    });
+    const searchContact = await contactRepository.findOneBy({id: contactId});
   
     if (!searchContact) { throw new AppError("contact not found", 404) };
     if (!searchContact.isActive) { throw new AppError("contact not active") };

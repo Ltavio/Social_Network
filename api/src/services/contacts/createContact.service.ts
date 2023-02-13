@@ -25,16 +25,16 @@ const createContactsService = async(
         }
     })
 
-    if(searchContactClient) {
-        throw new AppError("Contact already register")
-    }
-
     if(searchContact) {
         throw new AppError("Contact already register")
     }
     
     if(!searchClient) {
         throw new AppError("Client not found", 404)
+    }
+
+    if(!searchClient.isActive) {
+        throw new AppError("Client not activate", 400)
     }
 
     const contact = contactRepository.create({

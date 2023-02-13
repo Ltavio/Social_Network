@@ -17,20 +17,25 @@ const updatedClientService = async(
     }
 
     const data = Object.keys(dataClient);
-
+    
     if ( data.includes( "isActive" ) || data.includes( "id" ) ) {
         throw new AppError( "Not Possible update isActive or ID", 401 )
     };
 
-    await clientRepository.update(clients!.id, {
-        ...clients,
-        ...dataClient,
+    const { name, email, phone } = dataClient
+
+    await clientRepository.update(clients.id, {
+        name: name ? name : clients.name,
+        email: email ? email : clients.email,
+        phone: phone ? phone : clients.phone,
         updatedAt: new Date(),
     })
 
+    const client = await clientRepository.findOneBy({ id: clients.id})
+
     return {
         message: "Updated client",
-        data: clients
+        data: client!
     }
 }
 
