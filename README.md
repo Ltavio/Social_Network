@@ -12,7 +12,7 @@ Crie e configure o arquivo .env
 ````
 cd api
 ````
-### PASSO 2 - instale as dependencias 
+### PASSO 2 - instale as dependencias (to Backend)
 ````
 yarn
 ````
@@ -20,7 +20,7 @@ yarn
 ````
 cd frontend
 ````
-### PASSO 4 - instale as dependencias 
+### PASSO 4 - instale as dependencias (to Frontend)
 ````
 yarn
 ````
@@ -38,7 +38,7 @@ yarn start
 http://localhost:3333
 ````
 
-## Endpoints do serviço:
+## Endpoints do serviço: (para testes na api)
 
 <table>
     <thead>
