@@ -2,16 +2,40 @@
 ## Descrição
 É uma aplicação voltada para a criação de um usuário junto aos seus contatos, à qual o próprio usuário poderá adicionalo e vinculalo a sua lista de contatos
 
-### Configurando seu ambiente para a utilização do projeto
+## Configurando seu ambiente para a utilização do projeto
 ````
 Crie e configure o arquivo .env 
 ````
 
-
-### Para inicializar a aplicação:
-
+## Para inicializar a aplicação:
+### PASSO 1 - Entre no diretório da api
+````
+cd api
+````
+### PASSO 2 - instale as dependencias 
+````
+yarn
+````
+### PASSO 3 - volte para o diretório principal e vá para o diretório do frontend
+````
+cd frontend
+````
+### PASSO 4 - instale as dependencias 
+````
+yarn
+````
+### PASSO 5 - executar o comando para que a api comece a rodar(dentro do diretório da api)
 ````
 yarn dev
+````
+### PASSO 6 - executar o comando para que a front comece a rodar(dentro do diretório da frontend)
+````
+yarn start
+````
+
+##Endpoint base da api:
+````
+http://localhost:3333
 ````
 
 ## Endpoints do serviço:
